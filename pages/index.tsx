@@ -1,42 +1,45 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const sections = [
     {
-      name: "Frontend",
-      color: "#EF767A",
+      name: 'Frontend',
+      color: '#EF767A',
       paths: [
         {
-          name: "Desktop",
+          name: 'Desktop',
           blocks: [
-            { name: "Browser API", variant: "goodtoknow" },
+            { name: 'Browser API', variant: 'goodtoknow' },
             {
-              name: "Html",
+              name: 'Html',
               description:
                 "Html is essential for getting into web. P.S. IT'S NOT A PROGRAMMING LANGUAGE",
               links: [
-                "https://htmlacademy.org/",
-                "https://www.w3schools.com/html/",
-                "https://www.youtube.com/watch?v=a_iQb1lnAEQ",
+                'https://htmlacademy.org/',
+                'https://www.w3schools.com/html/',
+                'https://www.youtube.com/watch?v=a_iQb1lnAEQ',
               ],
-              variant: "essential",
+              variant: 'essential',
             },
-            { name: "Css" },
-            { name: "Javascript" },
+            { name: 'Css' },
+            { name: 'Javascript' },
           ],
         },
-        { name: "Web" },
+        { name: 'Web' },
       ],
     },
-    { name: "Backend", color: "#456990" },
-    { name: "Marketing", color: "#EEB868" },
+    { name: 'Backend', color: '#456990' },
+    { name: 'Marketing', color: '#EEB868' },
   ];
 
   const [isOpened, setIsOpened] = useState(true);
   const [currentBlock, setCurrentBlock] = useState<any>();
+
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -47,16 +50,16 @@ export default function Home() {
       </Head>
 
       <header>
-        <nav className={styles.nav}>
+        <nav className="w-full px-10 py-5 text-3xl text-white bg-green-600">
           <p>Центр-Навыки</p>
         </nav>
       </header>
       <main className={styles.mainBlock}>
-        <div className={styles.sectionBtnGroup}>
+        <div className="flex justify-center w-full gap-5 mt-20">
           {sections.map((sec) => (
             <div key={sec.name}>
               <div
-                className={styles.sectionBtn}
+                className="p-20 text-3xl font-semibold rounded-full shadow-md cursor-pointer"
                 style={{ backgroundColor: sec.color }}
               >
                 {sec.name}
